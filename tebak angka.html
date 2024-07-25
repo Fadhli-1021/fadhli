@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Tebak Angka</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        #guess-input {
+            padding: 8px;
+            font-size: 16px;
+            width: 60px;
+        }
+        #result {
+            font-size: 18px;
+            color: #008000;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Game Tebak Angka</h1>
+    <p>Masukkan angka antara 1 sampai 100:</p>
+    <input type="text" id="guess-input" placeholder="Tebak...">
+    <button onclick="checkGuess()">Tebak!</button>
+    <p id="result"></p>
+
+    <script>
+        // Generate random number between 1 and 100
+        const randomNumber = Math.floor(Math.random() * 100) + 1;
+        console.log(randomNumber); // For debugging purposes
+
+        function checkGuess() {
+            const guess = parseInt(document.getElementById('guess-input').value);
+            const result = document.getElementById('result');
+
+            if (isNaN(guess) || guess < 1 || guess > 100) {
+                result.textContent = 'Masukkan angka antara 1 sampai 100!';
+            } else if (guess === randomNumber) {
+                result.textContent = 'Selamat! Anda menebak dengan benar!';
+                result.style.color = '#008000'; // Green color
+            } else {
+                let message = `Tebakan Anda ${guess} terlalu `;
+                message += (guess < randomNumber) ? 'rendah.' : 'tinggi.';
+                result.textContent = message;
+                result.style.color = '#ff6347'; // Tomato color
+            }
+        }
+    </script>
+
+
+
+     <p>&copy; 2024 Website Game. Hak Cipta Dilindungi Oleh Fadhli.</p>
+</body>
+</html>
